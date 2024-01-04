@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Tienda de Celulares</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="celular_logo.png" alt="Logo de Celular">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="inicio">Inicio</a></li>
+                <li><a href="#" id="quienesSomos">Quiénes Somos</a></li>
+                <li><a href="#" id="productos">Productos</a></li>
+                <li><a href="#" id="contactenos">Contáctenos</a></li>
+            </ul>
+        </nav>
+        <div id="businessHours"></div>
+    </header>
+
+    <main>
+        <section id="cover">
+            <!-- Imagen de portada -->
+            <img src="cover.jpg" alt="Portada">
+        </section>
+
+        <section id="inicio">
+            <h2>Bienvenido a nuestra tienda de celulares</h2>
+            <p>Texto de bienvenida...</p>
+            <!-- Banners alusivos -->
+            <div class="banner" id="bannerQuienesSomos"></div>
+            <div class="banner" id="bannerProductos"></div>
+        </section>
+
+        <section id="quienesSomos">
+            <h2>Quiénes Somos</h2>
+            <p>Descripción de la empresa, valores, misión y visión...</p>
+            <!-- Foto del gerente -->
+            <img src="gerente.jpg" alt="Gerente">
+        </section>
+
+        <section id="productos">
+            <h2>Nuestros Celulares Samsung</h2>
+            <!-- Lista de celulares -->
+            <div class="celular">
+                <img src="samsung1.jpg" alt="Samsung 1">
+                <h3>Samsung 1</h3>
+                <p>Descripción del Samsung 1...</p>
+            </div>
+            <!-- Repetir estructura para los otros celulares -->
+        </section>
+
+        <section id="contactenos">
+            <h2>Contáctenos</h2>
+            <!-- Información de contacto y formulario -->
+            <p>Teléfono: 500500</p>
+            <p>Correo: tienda@correo.com</p>
+            <p>Ubicación: Dirección cualquiera</p>
+            <form id="contactForm">
+                <!-- Elementos del formulario -->
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2024 Angel Mendoza. Sitio Web con todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
+Estilos CSS: styles.css
+css
+Copy code
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos específicos de las secciones */
+#quienesSomos, #productos, #contactenos {
+    padding: 20px;
+}
+
+/* Añade más estilos según tus necesidades */
+Script JavaScript: script.js
+javascript
+Copy code
+document.addEventListener('DOMContentLoaded', function () {
+    // Horario de apertura
+    const businessHours = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+    document.getElementById('businessHours').innerText = `Abierto de ${businessHours.join(' a ')} a las XX:XX horas`;
+
+    // Efecto al pasar el mouse sobre el menú
+    const menuItems = document.querySelectorAll('nav a');
+    menuItems.forEach(item => {
+        item.addEventListener('mouseover', function () {
+            this.style.color = 'red';
+        });
+
+        item.addEventListener('mouseout', function () {
+            this.style.color = 'white';
+        });
+    });
+
+    // Mostrar alerta al enviar el formulario de contacto
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const formData = new FormData(contactForm);
+        let alertText = '<table>';
+        formData.forEach((value, key) => {
+            alertText += `<tr><td>${key}</td><td>${value}</td></tr>`;
+        });
+        alertText += '</table>';
+        alert(alertText);
+    });
+});
